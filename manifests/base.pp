@@ -12,7 +12,7 @@ class logrotate::base (
   case $ensure {
     'latest': { $_ensure = 'latest' }
     false,'absent': { $_ensure = 'absent' }
-    default: { $_ensure = 'presest' }
+    default: { $_ensure = 'present' }
   }
 
   package { 'logrotate':
