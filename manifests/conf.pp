@@ -50,10 +50,6 @@ class logrotate::conf (
 #############################################################################
 # SANITY CHECK VALUES
 
-  if $name !~ /^[a-zA-Z0-9\._\/-]+$/ {
-    fail("Logrotate::Rule[${name}]: namevar must be alphanumeric")
-  }
-
   case $ensure {
     'present','file': {}
     'absent': {}
