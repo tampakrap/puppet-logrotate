@@ -49,6 +49,9 @@ class logrotate::base (
     'SuSE': {
       include logrotate::defaults::suse
     }
+    'Gentoo': {
+      include logrotate::defaults::gentoo
+    }
     default: { }
   }
 }
