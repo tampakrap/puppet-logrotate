@@ -22,7 +22,7 @@ class logrotate (
     '/etc/logrotate.conf':
       ensure  => file,
       mode    => '0444',
-      content => template('logrotate/etc/logrotate.conf');
+      content => template('logrotate/etc/logrotate.conf.erb');
     '/etc/logrotate.d':
       ensure  => directory,
       mode    => '0755';
