@@ -255,8 +255,6 @@ class logrotate::conf (
 #
 ####################################################################
 
-  include logrotate::base
-
   file { $logrotate_conf:
       ensure  => $ensure,
       owner   => 'root',
