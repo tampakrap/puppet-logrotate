@@ -8,7 +8,7 @@ class logrotate (
   $create          = $logrotate::params::create,
   $compress        = $logrotate::params::compress,
   $dateext         = $logrotate::params::dateext,
-) inherits lograte::params {
+) inherits logrotate::params {
 
   include logrotate::package
 
