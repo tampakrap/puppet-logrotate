@@ -7,16 +7,16 @@
 
 # keep 4 weeks worth of backlogs
 rotate <%= @rotate %>
-<% if @create == 'true' %>
+<% if @create %>
 # create new (empty) log files after rotating old ones
 create
 <% end -%>
-<% if @dateext == 'true' %>
+<% if @dateext %>
 # use date as a suffix of the rotated file
 dateext
 <% end -%>
-<% if @compress == 'true' %>
-# uncomment this if you want your log files compressed
+<% if @compress %>
+# compressed log files
 compress
 <% end -%>
 
