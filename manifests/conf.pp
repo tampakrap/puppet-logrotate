@@ -261,6 +261,6 @@ class logrotate::conf (
       group   => 'root',
       mode    => '0444',
       content => template('logrotate/etc/logrotate.conf.erb'),
-      require => Package['logrotate'],
+      require => Class['logrotate::package'],
   }
 }
