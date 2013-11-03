@@ -3,13 +3,22 @@
 
 # Default values
 # rotate log files weekly
-weekly
+<%= @rotate_every %>
 
 # keep 4 weeks worth of backlogs
-rotate 4
-
+rotate <%= @rotate %>
+<% if @create == 'true' %>
 # create new (empty) log files after rotating old ones
 create
+<% end -%>
+<% if @dateext == 'true' %>
+# use date as a suffix of the rotated file
+dateext
+<% end -%>
+<% if @compress == 'true' %>
+# uncomment this if you want your log files compressed
+compress
+<% end -%>
 
 # packages drop log rotation information into this directory
 include /etc/logrotate.d
