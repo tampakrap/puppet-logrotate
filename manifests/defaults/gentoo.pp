@@ -17,6 +17,7 @@ class logrotate::defaults::gentoo {
     'wtmp':
       path        => '/var/log/wtmp',
       create_mode => '0664',
+      missingok   => false,
       minsize     => '1M';
     'btmp':
       path        => '/var/log/btmp',
