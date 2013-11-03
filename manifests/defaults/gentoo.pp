@@ -20,6 +20,6 @@ class logrotate::defaults::gentoo {
       minsize     => '1M';
     'btmp':
       path        => '/var/log/btmp',
-      create_mode => '0660';
+      create_mode => '0600';
   }
 }
