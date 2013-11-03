@@ -50,14 +50,6 @@ class logrotate::conf (
 #############################################################################
 # SANITY CHECK VALUES
 
-  case $ensure {
-    'present','file': {}
-    'absent': {}
-    default: {
-      fail("Logrotate::Rule[${name}]: invalid ensure value")
-    }
-  }
-
   case $compress {
     'undef': {}
     true: { $_compress = 'compress' }
