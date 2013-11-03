@@ -13,14 +13,20 @@ class logrotate (
     require => Class['logrotate::package'],
   }
 
-  file {
-    '/etc/logrotate.d':
-      ensure  => directory,
-      mode    => '0755';
-    '/etc/cron.daily/logrotate':
-      ensure  => file,
-      mode    => '0555',
-      source  => 'puppet:///modules/logrotate/etc/cron.daily/logrotate';
+  file { '/etc/logrotate.d':
+    ensure  => directory,
+    mode    => '0755',
+  }
+
+  cron { 'logrotate daily':
+    ensure  => $ensure,
+    command => 'test -x /usr/sbin/logrotate || exit 0; /usr/sbin/logrotate /etc/logrotate.conf',
+    hour    => '0',
+    minute  => '8',
+    require => [
+      File['/etc/logrotate.conf'],
+      Class['logrotate::package'],
+    ],
   }
 
 }

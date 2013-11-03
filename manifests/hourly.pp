@@ -25,21 +25,21 @@ class logrotate::hourly($ensure='present') {
     }
   }
 
-  file {
-    '/etc/logrotate.d/hourly':
-      ensure => $dir_ensure,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0755';
-    '/etc/cron.hourly/logrotate':
-      ensure  => $ensure,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0555',
-      source  => 'puppet:///modules/logrotate/etc/cron.hourly/logrotate',
-      require => [
-        File['/etc/logrotate.d/hourly'],
-        Class['logrotate::package'],
-      ];
+  file { '/etc/logrotate.d/hourly':
+    ensure => $dir_ensure,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
+
+  cron { 'logrotate hourly':
+    ensure  => $ensure,
+    command => 'test -x /usr/sbin/logrotate || exit 0; /usr/sbin/logrotate /etc/logrotate.d/hourly',
+    minute  => '17',
+    require => [
+      File['/etc/logrotate.d/hourly'],
+      Class['logrotate::package'],
+    ],
+  }
+
 }
