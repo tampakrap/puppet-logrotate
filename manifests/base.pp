@@ -6,7 +6,7 @@
 #
 #   include logrotate::base
 class logrotate::base (
-    $ensure = 'latest'
+  $ensure = 'latest'
 ) {
 
   case $ensure {
