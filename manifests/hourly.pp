@@ -39,7 +39,7 @@ class logrotate::hourly($ensure='present') {
       source  => 'puppet:///modules/logrotate/etc/cron.hourly/logrotate',
       require => [
         File['/etc/logrotate.d/hourly'],
-        Package['logrotate'],
+        Class['logrotate::package'],
       ];
   }
 }

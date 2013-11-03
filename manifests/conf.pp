@@ -5,10 +5,12 @@
 #
 # Examples
 #
-#   logrotate::conf{'/etc/logrotate.conf':}
+#   class { 'logrotate::conf':
+#     logrotate_conf => '/etc/logrotate.conf'
+#   }
 #
-define logrotate::conf (
-  $ensure          = 'present',
+class logrotate::conf (
+  $logrotate_conf  = '/etc/logrotate.conf',
   $compress        = 'undef',
   $compresscmd     = 'undef',
   $compressext     = 'undef',
@@ -267,7 +269,7 @@ define logrotate::conf (
 
   include logrotate::base
 
-  file { $name:
+  file { $logrotate_conf:
       ensure  => $ensure,
       owner   => 'root',
       group   => 'root',
